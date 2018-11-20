@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css?family=Cutive|Cutive+Mono");
+:root {
+  --body: black;
+  --font: white;
+  --back: linear-gradient(
+    to right top,
+    #0e04d1,
+    #c90097,
+    #fb0059,
+    #ff5d27,
+    #eba612
+  );
+  --toolbar: #2d2d2d;
+  --textArea: #212121;
+  --textFont: #f2f2f2;
+  --tableColor: #262626;
+}
+
+body {
+  background-color: black;
+  background-color: var(--body);
+  color: white;
+  color: var(--font);
+  font-family: "Cutive", serif;
+  font-size: 1.3vmax;
+  min-height: 100%;
+  width: 100%;
+  transition: all 1s;
+  overflow-y: scroll;
+}
+
+#app {
+  width: 100%;
+}
+
+.back {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  top: 3vmax;
+  left: 0%;
+  background-image: linear-gradient(to right top, #0e04d1, #c90097, #fb0059, #ff5d27, #eba612);
+  background-image: var(--back);
+  transition: background-image 1s;
+}
+.back #theme-switch {
+  z-index: 99;
+  font-size: 3vmax;
+  position: fixed;
+  top: 3%;
+  left: 88%;
+  cursor: pointer;
+}
+.back #theme-switch:hover {
+  transform: scale(1.2);
+}
+.back #info {
+  position: fixed;
+  top: 3%;
+  left: 93%;
+  font-size: 2.2vmax;
+  cursor: pointer;
+  padding-top: 0.5%;
+  z-index: 99;
+}
+.back #info:hover {
+  transform: scale(1.2);
+  color: #0073e6;
+}
+
+.editor {
+  position: absolute;
+  width: 49.5%;
+  margin: 0.2%;
+  padding: 1%;
+  height: 99%;
+  overflow: auto;
+  background: #212121;
+  background: var(--textArea);
+  color: #f2f2f2;
+  color: var(--textFont);
+}
+.editor textarea {
+  background: #0d0d0d;
+  background: var(--textArea);
+  color: #f2f2f2;
+  color: var(--textFont);
+  width: 100%;
+  height: 100%;
+  margin-top: 15%;
+  outline: none;
+  overflow-y: scroll;
+  border: none;
+}
+.editor .toolbar {
+  top: 0;
+  margin-left: 0.2%;
+  width: 49.5%;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
+
+@-moz-document url-prefix() {
+  html,
+  body {
+    overflow: hidden !important;
+  }
+}
+.preview {
+  position: absolute;
+  overflow: auto;
+  padding: 1;
+  left: 49.9%;
+  margin: 0.2%;
+  margin-left: 0;
+  width: 49.8%;
+  height: 99%;
+  background: #0d0d0d;
+  background: var(--textArea);
+}
+.preview #view {
+  padding: 5%;
+  margin-top: 10%;
+}
+.preview table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.preview table th {
+  background-color: #004d80;
+}
+.preview table td,
+.preview table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.preview table tr:nth-child(even) {
+  background-color: var(--tableColor);
+}
+.preview table tr:hover {
+  background-color: #99ccff;
+}
+.preview h1 {
+  font-size: 2.6vmax;
+}
+.preview h2 {
+  font-size: 2.2vmax;
+}
+.preview h3 {
+  font-size: 1.8vmax;
+}
+.preview .toolbar {
+  left: 49.8%;
+  width: 49.9%;
+}
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--toolbar);
+  color: var(--textFont);
+  box-shadow: inset 2px 5px 20px #2e2e2e;
+}
+.toolbar h3 {
+  margin-left: 5%;
+  padding: 2%;
+  font-size: 2.4vmax;
+  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828;
+}
+
+@keyframes blinks {
+  20% {
+    background-image: linear-gradient(to right top, #0e04d1, #c90097, #fb0059, #ff5d27, #eba612);
+  }
+  30% {
+    background-image: linear-gradient(to right top, #eba612, #0e04d1, #fb0059, #c90097, #ff5d27);
+  }
+  40% {
+    background-image: linear-gradient(to right top, #eba612, #0b0dc7, #fb0059, #c90097, #c06000);
+  }
+  50% {
+    background-image: linear-gradient(to right top, #c90097, #eba612, #c06000, #0b0dc7, #fb0059);
+  }
+  60% {
+    background-image: linear-gradient(to right top, #0e04d1, #0b0dc7, #bc007a, #c06000, #c90097);
+  }
+  70% {
+    background-image: linear-gradient(to right top, #eba612, #0b0dc7, #fb0059, #c90097, #c06000);
+  }
+  80% {
+    background-image: linear-gradient(to right top, #eba612, #d60032, #fb0059, #c90097, #0b0dc7);
+  }
+  90% {
+    background-image: linear-gradient(to right top, #989514, #c90097, #0b0dc7, #fb0059, #c06000);
+  }
+  100% {
+    background-image: var(--back);
+  }
+}
+.blinks {
+  animation: blinks 1.5s ease-in-out;
+}
+
+@media only screen and (max-width: 580px) {
+  body {
+    font-size: 2vmax;
+  }
+
+  body .back {
+    width: 100vw;
+    left: -5.5% !important;
+  }
+  body .back:focus-within {
+    min-height: 1000px !important;
+  }
+
+  .editor textarea {
+    margin-top: 20%;
+  }
+  .editor:focus-within {
+    height: 1000px !important;
+    font-size: 3.5vmax !important;
+  }
+
+  .preview #view {
+    margin-top: 25%;
+  }
+
+  body .back #theme-switch {
+    top: 1.5%;
+    left: 80%;
+    font-size: 3.2vmax;
+  }
+
+  body .back #info {
+    top: 1.3%;
+    font-size: 3.2vmax;
+    left: 90%;
+  }
+
+  body .toolbar h3 {
+    margin-top: 2%;
+    font-size: 2.7vmax;
+    text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  body .back #theme-switch {
+    top: 1.3%;
+    left: 80%;
+  }
+
+  body .back #info {
+    top: 1.3%;
+    left: 88%;
+  }
+}
